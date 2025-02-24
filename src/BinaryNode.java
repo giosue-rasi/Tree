@@ -1,6 +1,6 @@
 public class BinaryNode<T extends Comparable<T>> extends Node<T>{
-    private BinaryNode<T> left;
-    private BinaryNode<T> right;
+    protected BinaryNode<T> left;
+    protected BinaryNode<T> right;
 
     protected BinaryNode(T value){
         super(value);

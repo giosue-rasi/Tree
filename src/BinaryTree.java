@@ -136,12 +136,11 @@ public class BinaryTree<T extends Comparable<T>> extends Tree<T> {
         if (b != null) b.setParent(a.getParent());
     }
 
-    @Override
     public BinaryNode<T> getRoot(){
         return (BinaryNode<T>) root;
     }
 
-    public void setRoot(BinaryNode<T> root){
+    public void setRoot(BinaryNode<T> root) {
         this.root = root;
     }
 

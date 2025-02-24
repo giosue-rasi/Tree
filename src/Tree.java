@@ -17,11 +17,4 @@ public abstract class Tree<T extends Comparable<T>> {
     public abstract Node<T> minimum();
     public abstract Node<T> maximum();
 
-    public Node<T> getRoot() {
-        return root;
-    }
-    public void setRoot(Node<T> root) {
-        this.root = root;
-    }
-
 }
