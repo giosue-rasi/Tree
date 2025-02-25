@@ -37,8 +37,35 @@ public class BlackRedTree<T extends Comparable<T>> extends BinaryTree<T> {
 
     @Override
     public void remove(T value) {
-        //TODO: Implement remove method
-        super.remove(value);
+        BlackRedNode<T> node = new BlackRedNode<>(value);
+        BlackRedNode<T> originalNode = node;
+        BlackRedNode<T> child = null;
+        boolean originalNodeColor = originalNode.isRed();
+        if(node.getLeft() == null) {
+            child = node.getRight();
+            transplant(node, child);
+        } else if(node.getRight() == null) {
+            child = node.getLeft();
+            transplant(node, child);
+        } else {
+            originalNode = (BlackRedNode<T>) minimum(node.getRight());
+            originalNodeColor = originalNode.isRed();
+            child = originalNode.getRight();
+            if(originalNode.getParent() == node) {
+                child.setParent(originalNode);
+            } else {
+                transplant(originalNode, originalNode.getParent());
+                originalNode.setRight(node.getRight());
+                originalNode.getParent().setParent(originalNode);
+            }
+            transplant(node, originalNode);
+            originalNode.setLeft(node.getLeft());
+            originalNode.getLeft().setParent(originalNode);
+            originalNode.setColor(node.isRed());
+        }
+        if(originalNodeColor == false) {
+            removeFix(child);
+        }
     }
 
     private void leftRotate(BlackRedNode<T> node) {
@@ -134,6 +161,7 @@ public class BlackRedTree<T extends Comparable<T>> extends BinaryTree<T> {
 
     private BlackRedNode<T> removeFix(BlackRedNode<T> node) {
         //TODO: implement removeFix
+
         return null;
     }
 

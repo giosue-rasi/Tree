@@ -71,7 +71,7 @@ public class BinaryTree<T extends Comparable<T>> extends Tree<T> {
         return minimum(getRoot());
     }
 
-    private BinaryNode<T> minimum(BinaryNode<T> node) {
+    BinaryNode<T> minimum(BinaryNode<T> node) {
         while(node.getLeft() != null) {
             node = node.getLeft();
         }
@@ -128,7 +128,7 @@ public class BinaryTree<T extends Comparable<T>> extends Tree<T> {
         else { return binarySearch(value, node.getRight()); }
     }
 
-    private void transplant(BinaryNode<T> a, BinaryNode<T> b) {
+    void transplant(BinaryNode<T> a, BinaryNode<T> b) {
         if (a.getParent() == null) setRoot(b);
         else if (a == a.getParent().getLeft()) a.getParent().setLeft(b);
         else a.getParent().setRight(b);
