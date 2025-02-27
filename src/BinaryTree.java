@@ -133,7 +133,7 @@ public class BinaryTree<T extends Comparable<T>> extends Tree<T> {
         else if (a == a.getParent().getLeft()) a.getParent().setLeft(b);
         else a.getParent().setRight(b);
 
-        if (b != null) b.setParent(a.getParent());
+        b.setParent(a.getParent());
     }
 
     public BinaryNode<T> getRoot(){
